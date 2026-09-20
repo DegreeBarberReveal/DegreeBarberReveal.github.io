@@ -1,0 +1,357 @@
+:root {
+    --bg: #07070a;
+    --card: #12121a;
+    --accent: #8b5cf6;
+    --accent2: #22d3ee;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.vignette {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, #000 100%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.particles {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.wrapper {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-nav {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.connection-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #22c55e;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.main-hub {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-block {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.pre-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    letter-spacing: 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.glitch-text {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #e2e8f0, #a78bfa, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.edition-label {
+    margin-top: 14px;
+    display: inline-block;
+    padding: 6px 18px;
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+
+.relic-container {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+}
+
+.relic-frame {
+    background: var(--card);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: 20px;
+    padding: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.inner-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.15), transparent 70%);
+    pointer-events: none;
+}
+
+.content-box {
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 14px;
+    padding: 32px 28px;
+    position: relative;
+}
+
+.file-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    font-size: 0.9rem;
+}
+
+.file-info .label {
+    color: var(--muted);
+}
+
+.file-info .value {
+    font-weight: 600;
+    color: var(--accent2);
+    letter-spacing: 0.5px;
+}
+
+.relic-button, .modal-button {
+    position: relative;
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.relic-button:hover, .modal-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: 0.6s;
+}
+
+.relic-button:hover .btn-shine,
+.modal-button:hover .btn-shine {
+    left: 120%;
+}
+
+.progress-container {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #1e1e2e;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+#bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.progress-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.relic-shadow {
+    position: absolute;
+    bottom: -30px;
+    left: 10%;
+    right: 10%;
+    height: 40px;
+    background: radial-gradient(ellipse, rgba(139, 92, 246, 0.25), transparent 70%);
+    filter: blur(15px);
+    z-index: -1;
+}
+
+.bottom-info {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    text-align: center;
+}
+
+.info-item .key {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.info-item .val {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background: var(--card);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-header {
+    margin-bottom: 16px;
+}
+
+.modal-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.modal-content h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.modal-text {
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.5;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.server-node {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+.terminal-specs {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.green-text {
+    color: #4ef081 !important;
+}
+
+.security-badge {
+    margin-top: 25px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.glass-card {
+    background: rgba(17, 24, 39, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+}
